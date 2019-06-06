@@ -11,9 +11,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("logowanie.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("logowanie.fxml"));
+       Parent root = FXMLLoader.load(getClass().getResource("/pracownik/pracownik_menu.fxml"));
+       // Parent root = FXMLLoader.load(getClass().getResource("/admin/admin_menu.fxml"));
+
         primaryStage.setTitle("Baza Danych Antykwariatów");
-        primaryStage.setScene(new Scene(root, 760, 400));
+        primaryStage.setScene(new Scene(root, 860, 600));
         primaryStage.setResizable(false);
         primaryStage.show();
     }

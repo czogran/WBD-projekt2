@@ -7,12 +7,18 @@ import antykwariat.AntykwariatDAO;
 import connection.DatabaseConnect;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import pracownik.Pracownik;
 import pracownik.PracownikDAO;
 
+import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -74,6 +80,8 @@ public class AdminController {
     @FXML
     private Button updateButton;
 
+    @FXML Button logoutButton;
+
     private String bank;
     private String imie;
     private String nazwisko;
@@ -112,6 +120,7 @@ public class AdminController {
 
         SetTableWithData();
         SetComboBoxes();
+        //columnDataUrPracownika.setText("aaaaaaaaa");
     }
 
     /**
@@ -223,7 +232,6 @@ public class AdminController {
         textTelefon.clear();
         textPesel.clear();
         textNazwisko.clear();
-
     }
 
     /**
@@ -444,6 +452,23 @@ public class AdminController {
         }
 
         return true;
+    }
+
+    /**
+     * funkja sluzaca do wylogowywania sie na panel ogolny
+     * @throws IOException
+     */
+    public void Logout() throws IOException
+    {
+        Stage stage = new Stage();
+        Parent root;
+            stage = (Stage) logoutButton.getScene().getWindow(); //bierzemy jakikolwiek element by ze starego okna by na niego naniesc nowe
+
+            root = FXMLLoader.load(getClass().getResource("/login/logowanie.fxml"));
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
     }
 
     /**

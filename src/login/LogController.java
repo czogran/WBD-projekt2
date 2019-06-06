@@ -34,7 +34,9 @@ public class LogController {
         if (password.getText().equals("aaa") && login.getText().equals("aaa")) {
             stage = (Stage) password.getScene().getWindow(); //bierzemy jakikolwiek element by ze starego okna by na niego naniesc nowe
 
-            root = FXMLLoader.load(getClass().getResource("pracownik.fxml"));
+            //Parent root = FXMLLoader.load(getClass().getResource("../admin/test.fxml"));
+
+            root = FXMLLoader.load(getClass().getResource("/pracownik/pracownik_menu.fxml"));
 
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -43,7 +45,7 @@ public class LogController {
         else if (password.getText().equals("bbb") && login.getText().equals("bbb")) {
             stage = (Stage) password.getScene().getWindow(); //bierzemy jakikolwiek element by ze starego okna by na niego naniesc nowe
 
-            root = FXMLLoader.load(getClass().getResource("adminstrator.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/admin/admin_menu.fxml"));
 
             Scene scene = new Scene(root);
             stage.setScene(scene);

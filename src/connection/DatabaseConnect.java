@@ -6,6 +6,7 @@ import java.sql.*;
 
 public class DatabaseConnect {
 
+
     private static Connection connection;
 
     /**
@@ -21,9 +22,9 @@ public class DatabaseConnect {
      * @throws SQLException
      */
     public static void ConnectToDatabase() throws SQLException {
-        String url = "jdbc:oracle:thin:@localhost:1521:orcl";
-        String user = "KPAWLUK";
-        String pwd = "wbd2019";
+        String url = "jdbc:oracle:thin:@localhost:1522:orcl";
+        String user = "PAWEL";
+        String pwd = "pawel";
 
         try {
             connection = DriverManager.getConnection(url, user, pwd);
@@ -64,6 +65,7 @@ public class DatabaseConnect {
         Statement state = null;
 
         try {
+
             state = connection.createStatement();
             rs = state.executeQuery(cmd);
             return rs;

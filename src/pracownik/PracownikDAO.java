@@ -138,15 +138,6 @@ public class PracownikDAO {
                 "    NR_TELEFONU = '" + telefon + "',\n" +
                 "   NR_KONTA_BANKOWEGO = '" + bank + "'\n" +
                 "    WHERE ID_PRACOWNIKA = " + id;
-        /*String cmd = "UPDATE PRACOWNICY\n" +
-                "      SET NAZWISKO = ? " +
-                "   AND NR_TELEFONU = ? " +
-                "   AND NR_KONTA_BANKOWEGO = ? " +
-                "    WHERE ID_PRACOWNIKA = ?";
-        PreparedStatement preparedStatement = null;
-        preparedStatement.setString(1, nazwisko);
-        preparedStatement.setString(2, telefon);
-        preparedStatement.setString(3, bank);*/
 
         try {
             DatabaseConnect.ExecuteUpdateStatement(cmd);
@@ -168,6 +159,10 @@ public class PracownikDAO {
             DatabaseConnect.ExecuteUpdateStatement(cmd);
         } catch (SQLException ex) {
             System.out.print(ex.toString());
+        }
+        catch (Exception ex)
+        {
+            System.out.println(ex.toString());
         }
     }
 

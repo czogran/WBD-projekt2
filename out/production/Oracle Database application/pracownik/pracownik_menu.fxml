@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="469.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pracownik.PracownikController">
+
+    <children>
+        <TabPane layoutX="32.0" layoutY="68.0" prefHeight="309.0" prefWidth="484.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+            <Tab fx:id="tabKlienci" onCloseRequest="#HideClient" onSelectionChanged="#DisplayClient" text="Klienci">
+    <Pane prefHeight="400.0" prefWidth="770.0">
+    <children>
+                        <TableView fx:id="tableKlienci" layoutY="-3.0" prefHeight="280.0" prefWidth="484.0" style="-fx-font-size: 8px">
+                          <columns>
+                            <TableColumn fx:id="columnId" prefWidth="36.0" text="ID" />
+                            <TableColumn fx:id="columnImie" prefWidth="41.0" text="IMIE" />
+                              <TableColumn fx:id="columnNazwisko" prefWidth="61.0" text="NAZWISKO" />
+                              <TableColumn fx:id="columnTelefon" prefWidth="69.0" text="TELEFON" />
+                              <TableColumn fx:id="columnEmail" prefWidth="51.0" text="EMAIL" />
+                              <TableColumn fx:id="columnAdres" minWidth="0.0" prefWidth="77.0" text="ID ADRESU" />
+                              <TableColumn fx:id="columnZarejestrowany" prefWidth="38.0" text="ZAREJESTROWANY" />
+                              <TableColumn fx:id="columnDataRejestracji" prefWidth="110.0" text="DATA REJESTRACJI" />
+                          </columns>
+                        </TableView>
+                    </children>
+                    </Pane>
+            </Tab>
+                <Tab fx:id="tabZadania" onClosed="#ShowClient" onSelectionChanged="#DisplayZadania" text="Zadanie">
+    <Pane prefHeight="400.0" prefWidth="770.0">
+    <children>
+                                <TableView fx:id="tableZadania" layoutX="-9.0" layoutY="-2.0" prefHeight="264.0" prefWidth="495.0" style="-fx-font-size: 8px">
+                                    <columns>
+                                        <TableColumn fx:id="columnIdZadania" prefWidth="93.0" text="ID ZADANIA ">
+
+                                        </TableColumn>
+                                        <TableColumn fx:id="columnRodzaj" prefWidth="93.0" text="RODZAJ ">
+
+                                    </TableColumn>
+                                        <TableColumn fx:id="columnDataNadania" prefWidth="109.0" text="DATA NADANIA">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="dataNadania" />
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn fx:id="columnRozpoczecie" prefWidth="119.0" text="ROZPOCZĘCIE">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="dataRozpoczecia" />
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                        <TableColumn fx:id="columnZakonczenie" prefWidth="89.0" text="ZAKONCZENIE">
+                                            <cellValueFactory>
+                                                <PropertyValueFactory property="dataZakonczenia" />
+                                            </cellValueFactory>
+                                        </TableColumn>
+                                    </columns>
+                                </TableView>
+    </children>
+    </Pane>
+                </Tab>
+            </tabs>
+        </TabPane>
+
+        <Label layoutX="60.0" layoutY="23.0" text="OKNO PRACOWNIKA" />
+      <Button fx:id="logoutButton" layoutX="32.0" layoutY="405.0" mnemonicParsing="false" text="WYLOGUJ" />
+      <Pane fx:id="paneClientAdd" layoutX="522.0" layoutY="55.0" prefHeight="361.0" prefWidth="123.0" visible="true">
+         <children>
+            <TextField fx:id="textImie" disable="true" layoutX="6.0" layoutY="14.0" prefHeight="31.0" prefWidth="111.0" promptText="IMIE" />
+            <TextField fx:id="textNazwisko" disable="true" layoutX="6.0" layoutY="53.0" prefHeight="31.0" prefWidth="111.0" promptText="NAZWISKO" />
+            <TextField fx:id="textTelefon" disable="true" layoutX="5.0" layoutY="94.0" prefHeight="31.0" prefWidth="111.0" promptText="NR_TELEFONU" />
+            <TextField fx:id="textEmail" disable="true" layoutX="6.0" layoutY="137.0" prefHeight="31.0" prefWidth="111.0" promptText="EMAIL" />
+            <ComboBox fx:id="textAdres" disable="true" layoutY="259.0" prefHeight="31.0" prefWidth="123.0" promptText="ADRES" />
+            <RadioButton fx:id="textCzyZarejestrwany" disable="true" layoutX="6.0" layoutY="183.0" mnemonicParsing="false" text="ZAREJESTROWANY" />
+            <DatePicker fx:id="textDataRejestracji" disable="true" layoutX="18.0" layoutY="216.0" prefHeight="31.0" prefWidth="98.0" promptText="DATA REJESTRACJI" />
+            <Button fx:id="buttonZaakceptuj" disable="true" layoutY="316.0" mnemonicParsing="false" onMouseClicked="#AddClient" text="ZAAKCEPTUJ" />
+         </children></Pane>
+      <Pane fx:id="paneClientButtons" layoutX="190.0" layoutY="385.0" prefHeight="71.0" prefWidth="349.0" visible="true">
+         <children>
+            <Button fx:id="dodajButton" layoutX="28.0" layoutY="20.0" mnemonicParsing="false" onMouseClicked="#ActivateAddClient" text="DODAJ" />
+            <Button fx:id="buttonUsun" layoutX="124.0" layoutY="20.0" mnemonicParsing="false" onMouseClicked="#DeleteClient" text="USUN" />
+            <Button fx:id="buttonZaktualizuj" layoutX="208.0" layoutY="20.0" mnemonicParsing="false" onMouseClicked="#ActivateUpdateClient" text="ZAKTUALIZUJ" />
+         </children>
+      </Pane>
+      <Button fx:id="buttonAnuluj" disable="true" layoutX="637.0" layoutY="370.0" mnemonicParsing="false" onMouseClicked="#AnulujPressed" text="ANULUJ" />
+    </children>
+
+</AnchorPane>
