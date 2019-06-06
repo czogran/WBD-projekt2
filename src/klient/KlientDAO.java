@@ -134,7 +134,16 @@ public void UpdateKlient(Integer id, String imie, String nazwisko,
                 //"(?, ?, ?, DATE ?, ?, ?, ?, 1, 1)";
                 + id + "', '" + imie + "', '" + nazwisko + "', '" + telefon + "', '" + email + "', '" + czyZarejestrowany +
 
-                "', ' " + dataRejestracji + "','" + idAdresu + "')";
+                "', '" + dataRejestracji + "','" + idAdresu + "')";
+               if(dataRejestracji ==null)
+               {
+                   cmd
+                           = "INSERT INTO KLIENCI VALUES ( '"
+                           //"(?, ?, ?, DATE ?, ?, ?, ?, 1, 1)";
+                           + id + "', '" + imie + "', '" + nazwisko + "', '" + telefon + "', '" + email + "', '" + czyZarejestrowany +
+
+                           "', " + null + ",'" + idAdresu + "')";
+               }
 // "', DATE '"
         //return cmd;
         try {

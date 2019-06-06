@@ -12,8 +12,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import jdk.nashorn.internal.runtime.ECMAException;
 import klient.Klient;
 import klient.KlientDAO;
+import login.ScreenController;
 import oracle.sql.DATE;
 
 import java.awt.event.KeyListener;
@@ -45,6 +47,27 @@ public class PracownikController {
     @FXML
     private TableView<Zadanie> tableZadania;
 
+    /************************************************************
+    columns responsible for displaying Zadania
+     *************************************************************/
+    @FXML
+    private TableColumn<Zadanie, Integer> columnIdZadania;
+    @FXML
+    private TableColumn<Zadanie, String> columnRodzaj;
+    @FXML
+    private TableColumn<Zadanie, String> columnDataNadania;
+    @FXML
+    private TableColumn<Zadanie, String> columnRozpoczecie;
+    @FXML
+    private TableColumn<Zadanie, String> columnZakonczenie;
+    @FXML
+    private TableColumn<Pracownik, Integer> columnIdAntykwariatu;
+    @FXML
+    private TableColumn<Pracownik, Integer> columnIdAdresu;
+
+    /*
+    columns responsible for displaying Klient
+     */
     @FXML
     private TableColumn<Klient, Integer> columnId;
     @FXML
@@ -63,22 +86,9 @@ public class PracownikController {
     private TableColumn<Klient, String> columnDataRejestracji;
 
 
-    @FXML
-    private TableColumn<Zadanie, Integer> columnIdZadania;
-    @FXML
-    private TableColumn<Zadanie, String> columnRodzaj;
-    @FXML
-    private TableColumn<Zadanie, String> columnDataNadania;
-    @FXML
-    private TableColumn<Zadanie, String> columnRozpoczecie;
-    @FXML
-    private TableColumn<Zadanie, String> columnZakonczenie;
-    @FXML
-    private TableColumn<Pracownik, Integer> columnIdAntykwariatu;
-    @FXML
-    private TableColumn<Pracownik, Integer> columnIdAdresu;
-
-
+    /**************************************************************
+        columns responsible for getting info about client
+     **************************************************************/
     @FXML
     private TextField textImie;
     @FXML
@@ -86,21 +96,21 @@ public class PracownikController {
     @FXML
     private TextField textEmail;
     @FXML
-
     private TextField textTelefon;
-
-    @FXML
-    private TextField textSearch;
-
     @FXML
     private DatePicker textDataRejestracji;
     @FXML
     private ComboBox<String> textAdres;
-
     @FXML
     RadioButton textCzyZarejestrwany;
 
 
+    @FXML
+    private TextField textSearch;
+
+    /***********************************************************
+    buttons responsible for selecting action for client
+     *************************************************************/
     @FXML
     private Button buttonDodaj;
     @FXML
@@ -108,118 +118,15 @@ public class PracownikController {
     @FXML
     private Button buttonUsun;
 
+    /*
+
+     */
     @FXML
     private Button buttonZaakceptuj;
     @FXML
     private Button buttonAnuluj;
     @FXML
     private Button updateButton;
-
-
-    /**
-     * Metoda inicjalizująca kontroler
-     */
-    @FXML
-    private void initialize() {
-        try {
-            DatabaseConnect.ConnectToDatabase();
-
-
-        } catch (SQLException ex) {
-            ShowAlert(ex.toString());
-        }
-        DisplayClient();
-    }
-
-    private ObservableList<Antykwariat> antykwariaty = FXCollections.observableArrayList();
-    private ObservableList<Adres> adresy = FXCollections.observableArrayList();
-    private ObservableList<Zadanie> zadania = FXCollections.observableArrayList();
-    private ObservableList<Klient> klienci = FXCollections.observableArrayList();
-
-    enum Mode {
-        UPDATE,
-        INSERT;
-    }
-
-    Mode mode;
-
-    public void DisplayZadania() {
-        HideClient();
-        zadania = new ZadanieDAO().GetAllZadania();
-
-        columnIdZadania.setCellValueFactory(new PropertyValueFactory<Zadanie, Integer>("idZadania"));
-        columnRodzaj.setCellValueFactory(new PropertyValueFactory<>("rodzajZadania"));
-        columnDataNadania.setCellValueFactory(new PropertyValueFactory<>("dataNadania"));
-        columnRozpoczecie.setCellValueFactory(new PropertyValueFactory<>("dataRozpoczecia"));
-        columnZakonczenie.setCellValueFactory(new PropertyValueFactory<>("dataZakonczenia"));
-
-
-        tableZadania.setItems(zadania);
-    }
-
-    private void ClearCells()
-    {
-        textCzyZarejestrwany.setSelected(false);
-        textDataRejestracji.setValue(null);
-        textAdres.getSelectionModel().clearSelection();
-        textImie.clear();
-        textNazwisko.clear();
-        textTelefon.clear();
-        textEmail.clear();
-
-    }
-
-    public void AnulujPressed()
-    {
-        ClearCells();
-        ChangePaneAddClientActivity(true);
-    }
-
-    public void DisplayClient() {
-        ShowClient();
-//columnId.setText("aaaaa");
-        klienci = new KlientDAO().GetAllKlienci();
-
-        columnId.setCellValueFactory(new PropertyValueFactory<Klient, Integer>("id_klienta"));
-        columnImie.setCellValueFactory(new PropertyValueFactory<Klient, String>("imie"));
-        columnNazwisko.setCellValueFactory(new PropertyValueFactory<Klient, String>("nazwisko"));
-        columnTelefon.setCellValueFactory(new PropertyValueFactory<Klient, String>("nr_telefonu"));
-        columnEmail.setCellValueFactory(new PropertyValueFactory<Klient, String>("email"));
-        columnZarejestrowany.setCellValueFactory(new PropertyValueFactory<Klient, String>("czy_zarejestrowany"));
-        columnDataRejestracji.setCellValueFactory(new PropertyValueFactory<Klient, String>("data_rejestracji"));
-        columnAdres.setCellValueFactory(new PropertyValueFactory<Klient, String>("id_adresu"));
-       // System.out.println(klienci.get(0).getId_adresu());
-        tableKlienci.setItems(klienci);
-    }
-
-    public void ActivateAddClient() {
-        ClearCells();
-        mode = Mode.INSERT;
-        ChangePaneAddClientActivity(false);
-        SetComboBoxes();
-    }
-
-    public void ActivateUpdateClient() {
-       ClearCells();
-        mode = Mode.UPDATE;
-        ChangePaneAddClientActivity(false);
-
-
-        Klient klient;
-        try {
-
-            klient = tableKlienci.getSelectionModel().getSelectedItem();
-            idKlienta=klient.getId_klienta();
-
-            FillAddPane(klient);
-            DisplayClient();
-        } catch (Exception ex) {
-            if (ex.equals("NullPointerException")) ;
-            InformationAlert("WYBIERZ KLIENTA DO ZAKTUALIZOWANIA");
-        }
-        SetComboBoxes();
-    }
-
 
     private String imie;
     private String nazwisko;
@@ -231,7 +138,147 @@ public class PracownikController {
     private String information;
     private int idKlienta;
 
-    public void AddClient() throws Exception {
+    /*****************************************************
+     * Metoda inicjalizująca kontroler
+     ****************************************************/
+    @FXML
+    private void initialize() {
+        try {
+            DatabaseConnect.ConnectToDatabase();
+
+
+        } catch (SQLException ex) {
+            ShowAlert(ex.toString());
+        }
+        textDataRejestracji.setValue(null);
+
+        DisplayClient();
+        SetComboBoxes();
+
+    }
+
+    /***************************************************************************************
+     * Observable lists of particular sets of elements
+    ***************************************************************************************/
+
+    private ObservableList<Antykwariat> antykwariaty = FXCollections.observableArrayList();
+    private ObservableList<Adres> adresy = FXCollections.observableArrayList();
+    private ObservableList<Zadanie> zadania = FXCollections.observableArrayList();
+    private ObservableList<Klient> klienci = FXCollections.observableArrayList();
+
+    /**
+     * enum which describes mode in which we are
+     * UPDATE- for updating client
+     * INSERT-for adding new client
+     */
+    enum Mode {
+        UPDATE,
+        INSERT;
+    }
+
+    Mode mode;
+
+    /**
+     * method for logging out of PRACOWNIK access to database
+     */
+    public void Logout() {
+        ScreenController.Activate("login", "Baza Danych Antykwariatów", 310, 230);
+    }
+
+    /**
+     * function for displaying ZADANIA from database on TableView
+     */
+    public void DisplayZadania() {
+        HideClient();
+zadania=new ZadanieDAO().GetAllZadania();
+//TODO tu jest bug nie wyswietla id zadania
+        columnIdZadania.setCellValueFactory(new PropertyValueFactory<>("idZadania"));
+        columnRodzaj.setCellValueFactory(new PropertyValueFactory<>("rodzajZadania"));
+        columnDataNadania.setCellValueFactory(new PropertyValueFactory<>("dataNadania"));
+        columnRozpoczecie.setCellValueFactory(new PropertyValueFactory<>("dataRozpoczecia"));
+        columnZakonczenie.setCellValueFactory(new PropertyValueFactory<>("dataZakonczenia"));
+
+        tableZadania.setItems(zadania);
+    }
+
+    /**
+     * clears what is cells for adding or updating client
+     */
+    private void ClearCells() {
+        textCzyZarejestrwany.setSelected(false);
+        textDataRejestracji.setValue(null);
+        textAdres.getSelectionModel().clearSelection();
+        textImie.clear();
+        textNazwisko.clear();
+        textTelefon.clear();
+        textEmail.clear();
+
+    }
+
+    /**
+     * function used when we don't want change database
+     * for Anuluj Button
+     */
+    public void AnulujPressed() {
+        ClearCells();
+        ChangePaneAddClientActivity(true);
+    }
+
+    /**
+     * displays Clients on TableView
+     */
+    public void DisplayClient() {
+        ShowClient();
+        klienci = new KlientDAO().GetAllKlienci();
+
+        columnId.setCellValueFactory(new PropertyValueFactory<Klient, Integer>("id_klienta"));
+        columnImie.setCellValueFactory(new PropertyValueFactory<Klient, String>("imie"));
+        columnNazwisko.setCellValueFactory(new PropertyValueFactory<Klient, String>("nazwisko"));
+        columnTelefon.setCellValueFactory(new PropertyValueFactory<Klient, String>("nr_telefonu"));
+        columnEmail.setCellValueFactory(new PropertyValueFactory<Klient, String>("email"));
+        columnZarejestrowany.setCellValueFactory(new PropertyValueFactory<Klient, String>("czy_zarejestrowany"));
+        columnDataRejestracji.setCellValueFactory(new PropertyValueFactory<Klient, String>("data_rejestracji"));
+        columnAdres.setCellValueFactory(new PropertyValueFactory<Klient, String>("id_adresu"));
+
+        tableKlienci.setItems(klienci);
+    }
+
+    /**
+     * setting mode for UPDATE Klienci
+     */
+    public void ActivateAddClient() {
+        ClearCells();
+        mode = Mode.INSERT;
+        ChangePaneAddClientActivity(false);
+    }
+
+    /**
+     * setting mode for UPDATE Klienci
+     */
+    public void ActivateUpdateClient() {
+        ClearCells();
+        mode = Mode.UPDATE;
+        ChangePaneAddClientActivity(false);
+
+        Klient klient;
+        try {
+            klient = tableKlienci.getSelectionModel().getSelectedItem();
+            idKlienta = klient.getId_klienta();
+
+            FillAddPane(klient);
+        } catch (Exception ex) {
+            if (ex.equals("NullPointerException")) ;
+            InformationAlert("WYBIERZ KLIENTA DO ZAKTUALIZOWANIA");
+        }
+
+    }
+
+    /**
+     *function used when we accept changes in data bases
+     * it is responsible for making calls to KLIENTDAO class where are functions responsible for editing data base
+     * @throws Exception
+     */
+    public void ZaakceptujActions() throws Exception {
         boolean parametersOK = WalidataAddClient();
 
         if (mode == mode.INSERT) {
@@ -241,7 +288,6 @@ public class PracownikController {
                 info.show();
             } else {
                 idKlienta = new KlientDAO().MaxIdEntry();
-                InformationAlert(idAdresu.toString());
                 new KlientDAO().InsertKlient(idKlienta, imie, nazwisko, numerTelefonu, email, czyZarejestrowany, dataRejestracji, idAdresu);
             }
         } else if (mode == mode.UPDATE) {
@@ -250,17 +296,18 @@ public class PracownikController {
                 info.setContentText(information);
                 info.show();
             } else {
-                InformationAlert(idAdresu.toString());
-                InformationAlert(idAdresu.toString());
+                
                 new KlientDAO().UpdateKlient(idKlienta, imie, nazwisko, numerTelefonu, email, czyZarejestrowany, dataRejestracji, idAdresu);
             }
         }
-
-
         DisplayClient();
     }
 
-
+    /**
+     * checking if inputs for UPDATE or INSERT new client to database are correct
+     * displaying information about user mistakes
+     * @return true if data in  paneClientAdd are correct, false otherwise
+     */
     private boolean WalidataAddClient() {
         imie = textImie.getText();
         nazwisko = textNazwisko.getText();
@@ -268,9 +315,12 @@ public class PracownikController {
         numerTelefonu = textTelefon.getText();
         numerTelefonu = textTelefon.getText();
 
-        LocalDate localDate = textDataRejestracji.getValue();
-       // Date.valueOf(textUrodzenie.getValue());
-        dataRejestracji = Date.valueOf(textDataRejestracji.getValue());
+
+        dataRejestracji=null;
+       if(textDataRejestracji.getValue() !=null)
+            dataRejestracji = Date.valueOf(textDataRejestracji.getValue());
+
+
         if (textCzyZarejestrwany.isSelected())
             czyZarejestrowany = "t";
         else
@@ -326,9 +376,7 @@ public class PracownikController {
             } else {
                 dataRejestracji = null;
             }
-        }
-        catch (Exception ex)
-        {
+        } catch (Exception ex) {
 
         }
 
@@ -355,35 +403,32 @@ public class PracownikController {
 
     }
 
-
-
-    private void FillAddPane(Klient klient) {
+    /**
+     * function for filling panel with KLIENT data.
+     * Used for UPDATE KLIENT
+     * @param klient object from which we put values into panel for adding new Klient
+     */
+    private void FillAddPane(Klient klient)
+    {
         textEmail.setText(klient.getEmail());
-
         textImie.setText(klient.getImie());
         textTelefon.setText(klient.getNr_telefonu());
         textNazwisko.setText(klient.getNazwisko());
-        System.out.println(klient.getId_adresu());
-        for (Adres adres:adresy)
-        {
-            if(adres.getId_adresu().equals(klient.getId_adresu())) {
+
+        for (Adres adres : adresy) {
+            if (adres.getId_adresu().equals(klient.getId_adresu())) {
                 textAdres.setValue(adres.getMiasto());
                 break;
             }
+
         }
-
-
-
         if (klient.getCzy_zarejestrowany().equals("tak"))
-             textCzyZarejestrwany.setSelected(true);
-         else
-        textCzyZarejestrwany.setSelected(false);
+            textCzyZarejestrwany.setSelected(true);
+        else
+            textCzyZarejestrwany.setSelected(false);
 
-        // textCzyZarejestrwany.setText(klient.getCzy_zarejestrowany());
         textDataRejestracji.setValue(klient.getRegistrationData());
 
-        //  buttonAnuluj.setDisable(status);
-        // buttonZaakceptuj.setDisable(status);
     }
 
     /**

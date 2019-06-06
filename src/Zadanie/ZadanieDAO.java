@@ -13,9 +13,9 @@ public class ZadanieDAO {
 
 
     /**
-     * Metoda pobierająca dane antykwariatów z bazy
+     * Function getting zadania for pracownik from database
      *
-     * @return zwraca listę antykwariatów z bazy
+     * @return returns zadania from database
      */
     public   ObservableList<Zadanie> GetAllZadania() {
 
@@ -52,7 +52,6 @@ public class ZadanieDAO {
      */
     private  Zadanie SetFieldsOfClass(ResultSet rs, Zadanie zadanie) throws SQLException {
         try {
-          //  System.out.print(rs.getString(2));
             zadanie.setIdZadania(rs.getInt(1));
             zadanie.setRodzajZadania(rs.getString(2));
             zadanie.setDataNadania(rs.getString(3));

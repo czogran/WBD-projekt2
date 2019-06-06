@@ -8,17 +8,19 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-
     @Override
     public void start(Stage primaryStage) throws Exception{
-        //Parent root = FXMLLoader.load(getClass().getResource("logowanie.fxml"));
-       Parent root = FXMLLoader.load(getClass().getResource("/pracownik/pracownik_menu.fxml"));
-       // Parent root = FXMLLoader.load(getClass().getResource("/admin/admin_menu.fxml"));
-
+        Parent root = FXMLLoader.load(getClass().getResource("logowanie.fxml"));
         primaryStage.setTitle("Baza Danych Antykwariatów");
-        primaryStage.setScene(new Scene(root, 860, 600));
+        Scene scene = new Scene(root, 310, 190);
+        primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
+
+        ScreenController screenController = new ScreenController(scene, primaryStage);
+        ScreenController.AddScreen("login", FXMLLoader.load(getClass().getResource("logowanie.fxml")));
+        ScreenController.AddScreen("admin", FXMLLoader.load(getClass().getResource("/admin/admin_menu.fxml")));
+        ScreenController.AddScreen("pracownik",FXMLLoader.load(getClass().getResource("/pracownik/pracownik_menu.fxml")));
     }
 
 

@@ -27,29 +27,11 @@ public class LogController {
 
 
     public void Connect(ActionEvent actionEvent) throws IOException {
-        /* TODO  zrobienie w tym miejscu by sie laczy z baza danych*/
-        Stage stage = new Stage();
-        Parent root;
-        //domyslne hasla login aaa i aaa
-        if (password.getText().equals("aaa") && login.getText().equals("aaa")) {
-            stage = (Stage) password.getScene().getWindow(); //bierzemy jakikolwiek element by ze starego okna by na niego naniesc nowe
+        if (password.getText().equals("admin") && login.getText().equals("admin")) {
 
-            //Parent root = FXMLLoader.load(getClass().getResource("../admin/test.fxml"));
-
-            root = FXMLLoader.load(getClass().getResource("/pracownik/pracownik_menu.fxml"));
-
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        }
-        else if (password.getText().equals("bbb") && login.getText().equals("bbb")) {
-            stage = (Stage) password.getScene().getWindow(); //bierzemy jakikolwiek element by ze starego okna by na niego naniesc nowe
-
-            root = FXMLLoader.load(getClass().getResource("/admin/admin_menu.fxml"));
-
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            ScreenController.Activate("admin", "Menadżer pracowników", 770, 430);
+        } else if (password.getText().equals("bbb") && login.getText().equals("bbb")) {
+            ScreenController.Activate("pracownik","Konto Pracownika",770, 530);
         }
 
         //gdy sie nie łaczy z baz danych
@@ -60,19 +42,23 @@ public class LogController {
             login.setPromptText(Login);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText("Podano złe hasło lub login");
-            alert.setTitle("Bład Logowenia");
+            alert.setTitle("Bład logowania");
             alert.showAndWait();
 
         }
 
     }
-    public static String getLogin()
-    {return Login;}
-    public static String getPassword()
-    {return  Password;}
-    public static void setLogin(String newLogin)
-    {
-        Login=newLogin;
+
+    public static String getLogin() {
+        return Login;
+    }
+
+    public static String getPassword() {
+        return Password;
+    }
+
+    public static void setLogin(String newLogin) {
+        Login = newLogin;
     }
 
 }
