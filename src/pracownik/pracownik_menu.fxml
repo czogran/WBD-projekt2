@@ -14,6 +14,7 @@
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="823.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pracownik.PracownikController">
@@ -61,35 +62,34 @@
                 <Tab fx:id="tabZadania" onSelectionChanged="#DisplayZadania" text="Zadanie">
     <Pane prefHeight="380.0" prefWidth="685.0">
     <children>
-                                <TableView fx:id="tableZadania" layoutX="-9.0" layoutY="13.0" prefHeight="390.0" prefWidth="495.0" style="-fx-font-size: 8px">
+                                <TableView fx:id="tableZadania" layoutX="5.0" layoutY="14.0" prefHeight="336.0" prefWidth="726.0" style="-fx-font-size: 8px">
                                     <columns>
-                                        <TableColumn fx:id="columnIdZadania" prefWidth="93.0" text="ID ZADANIA ">
+                                        <TableColumn fx:id="columnIdZadania" prefWidth="158.0" text="ID ZADANIA ">
                                             <cellValueFactory>
                                                 <PropertyValueFactory property="idZadania" />
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn fx:id="columnRodzaj" prefWidth="93.0" text="RODZAJ ">
+                                        <TableColumn fx:id="columnRodzaj" prefWidth="135.0" text="RODZAJ ">
 
                                     </TableColumn>
-                                        <TableColumn fx:id="columnDataNadania" prefWidth="109.0" text="DATA NADANIA">
+                                        <TableColumn fx:id="columnDataNadania" prefWidth="143.0" text="DATA NADANIA">
                                             <cellValueFactory>
                                                 <PropertyValueFactory property="dataNadania" />
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn fx:id="columnRozpoczecie" prefWidth="119.0" text="ROZPOCZĘCIE">
+                                        <TableColumn fx:id="columnRozpoczecie" prefWidth="150.0" text="ROZPOCZĘCIE">
                                             <cellValueFactory>
                                                 <PropertyValueFactory property="dataRozpoczecia" />
                                             </cellValueFactory>
                                         </TableColumn>
-                                        <TableColumn fx:id="columnZakonczenie" prefWidth="89.0" text="ZAKONCZENIE">
+                                        <TableColumn fx:id="columnZakonczenie" prefWidth="139.0" text="ZAKONCZENIE">
                                             <cellValueFactory>
                                                 <PropertyValueFactory property="dataZakonczenia" />
                                             </cellValueFactory>
                                         </TableColumn>
                                     </columns>
                                 </TableView>
-                     <Separator layoutX="518.0" orientation="VERTICAL" prefHeight="283.0" prefWidth="3.0" />
-                     <Label layoutX="532.0" layoutY="14.0" prefHeight="234.0" prefWidth="223.0" text="Zadania jakie są do wykonania" />
+                     <Label layoutX="14.0" layoutY="289.0" prefHeight="150.0" prefWidth="374.0" text="Zadania jakie są do wykonania" />
     </children>
     </Pane>
                 </Tab>
@@ -97,6 +97,7 @@
                <content>
                   <Pane prefHeight="380.0" prefWidth="685.0">
                      <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dff0ff" height="345.0" layoutX="14.0" layoutY="4.0" stroke="BLACK" strokeType="INSIDE" width="258.0" />
                         <Label layoutX="497.0" layoutY="17.0" prefHeight="77.0" prefWidth="220.0" text="Uprawnienia">
                             <font>
                                 <Font size="36.0" />
@@ -107,6 +108,14 @@
                         <Label layoutX="497.0" layoutY="134.0" prefHeight="31.0" prefWidth="142.0" text="Modyfikacja klientów" />
                         <Label layoutX="497.0" layoutY="176.0" prefHeight="21.0" prefWidth="142.0" text="Przeglądanie zadań" />
                         <Button fx:id="logoutButton" layoutX="312.0" layoutY="367.0" mnemonicParsing="false" onMouseClicked="#Logout" text="WYLOGUJ" />
+                        <Label layoutX="27.0" layoutY="17.0" prefHeight="21.0" prefWidth="135.0" text="IMIE" />
+                        <Label fx:id="imieLabel" layoutX="125.0" layoutY="13.0" prefHeight="30.0" prefWidth="123.0" text="Label" />
+                        <Label layoutX="24.0" layoutY="56.0" text="NAZWISKO" />
+                        <Label fx:id="nazwiskoLabel" layoutX="126.0" layoutY="56.0" text="Label" />
+                        <Label layoutX="24.0" layoutY="104.0" text="TELEFON" />
+                        <Label fx:id="telefonLabel" layoutX="126.0" layoutY="104.0" text="Label" />
+                        <Label layoutX="22.0" layoutY="140.0" prefHeight="42.0" prefWidth="79.0" text=" URODZINY" />
+                        <Label fx:id="urodzinyLabel" layoutX="126.0" layoutY="150.0" text="a" />
                      </children>
                   </Pane>
                </content></Tab>

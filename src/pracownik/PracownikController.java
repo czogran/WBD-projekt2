@@ -29,7 +29,7 @@ public class PracownikController {
     private Tab tabKlienci;
 
     ///@FXML
-   // private Pane paneClientButtons;
+    // private Pane paneClientButtons;
 
     //@FXML
     //Pane paneClientAdd;
@@ -42,7 +42,7 @@ public class PracownikController {
     private TableView<Zadanie> tableZadania;
 
     /************************************************************
-    columns responsible for displaying Zadania
+     columns responsible for displaying Zadania
      *************************************************************/
     @FXML
     private TableColumn<Zadanie, Integer> columnIdZadania;
@@ -81,7 +81,7 @@ public class PracownikController {
 
 
     /**************************************************************
-        columns responsible for getting info about client
+     columns responsible for getting info about client
      **************************************************************/
     @FXML
     private TextField textImie;
@@ -103,7 +103,7 @@ public class PracownikController {
     private TextField textSearch;
 
     /***********************************************************
-    buttons responsible for selecting action for client
+     buttons responsible for selecting action for client
      *************************************************************/
     @FXML
     private Button buttonDodaj;
@@ -123,9 +123,23 @@ public class PracownikController {
     @FXML
     private Button szukajButton;
 
-    @FXML TextField szukajTextField;
+    @FXML
+    TextField szukajTextField;
+
+    @FXML
+    private Label imieLabel;
+
+    @FXML
+    private Label nazwiskoLabel;
+
+    @FXML
+    private Label telefonLabel;
+
+    @FXML
+    private Label urodzinyLabel;
 
 
+    public static int id=1;
 
     private String imie;
     private String nazwisko;
@@ -153,12 +167,13 @@ public class PracownikController {
 
         DisplayClient();
         SetComboBoxes();
+        DisplayPracownik(id);
 
     }
 
     /***************************************************************************************
      * Observable lists of particular sets of elements
-    ***************************************************************************************/
+     ***************************************************************************************/
 
     private ObservableList<Antykwariat> antykwariaty = FXCollections.observableArrayList();
     private ObservableList<Adres> adresy = FXCollections.observableArrayList();
@@ -190,7 +205,7 @@ public class PracownikController {
      */
     public void DisplayZadania() {
 
-zadania=new ZadanieDAO().GetPracownikZadania(1);
+        zadania = new ZadanieDAO().GetPracownikZadania(id);
 //TODO tu jest bug nie wyswietla id zadania
         columnIdZadania.setCellValueFactory(new PropertyValueFactory<>("idZadania"));
         columnRodzaj.setCellValueFactory(new PropertyValueFactory<>("rodzajZadania"));
@@ -199,6 +214,23 @@ zadania=new ZadanieDAO().GetPracownikZadania(1);
         columnZakonczenie.setCellValueFactory(new PropertyValueFactory<>("dataZakonczenia"));
 
         tableZadania.setItems(zadania);
+    }
+
+    private void DisplayPracownik(int id) {
+        Pracownik pracownik = new PracownikDAO().SearchPracownikById(id);
+
+        try {
+            imieLabel.setText(pracownik.getImie());
+            nazwiskoLabel.setText(pracownik.getNazwisko());
+            telefonLabel.setText(pracownik.getNr_telefonu());
+            urodzinyLabel.setText(pracownik.getData_urodzenia());
+        }
+        catch (Exception ex)
+        {
+
+        }
+
+
     }
 
     /**
@@ -222,10 +254,8 @@ zadania=new ZadanieDAO().GetPracownikZadania(1);
     public void AnulujPressed() throws SQLException {
         ClearCells();
         ChangePaneAddClientActivity(true);
-        if(mode==Mode.DELETE)
-        {
-            if (ConfirmationAlert("Czy chcesz przywrocic usunietych klientow?"))
-            {
+        if (mode == Mode.DELETE) {
+            if (ConfirmationAlert("Czy chcesz przywrocic usunietych klientow?")) {
                 DatabaseConnect.ExecuteRollback();
                 DisplayClient();
             }
@@ -283,8 +313,9 @@ zadania=new ZadanieDAO().GetPracownikZadania(1);
     }
 
     /**
-     *function used when we accept changes in data bases
+     * function used when we accept changes in data bases
      * it is responsible for making calls to KLIENTDAO class where are functions responsible for editing data base
+     *
      * @throws Exception
      */
     public void ZaakceptujActions() throws Exception {
@@ -316,9 +347,7 @@ zadania=new ZadanieDAO().GetPracownikZadania(1);
                 new KlientDAO().UpdateKlient(idKlienta, imie, nazwisko, numerTelefonu, email, czyZarejestrowany, dataRejestracji, idAdresu);
             }
 
-        }
-        else if(mode==mode.DELETE)
-        {
+        } else if (mode == mode.DELETE) {
             if (ConfirmationAlert("Czy chcesz definitywnie usunąć klienta?")) {
                 DatabaseConnect.ExecuteCommit();
                 buttonZaakceptuj.setDisable(true);
@@ -334,6 +363,7 @@ zadania=new ZadanieDAO().GetPracownikZadania(1);
     /**
      * checking if inputs for UPDATE or INSERT new client to database are correct
      * displaying information about user mistakes
+     *
      * @return true if data in  paneClientAdd are correct, false otherwise
      */
     private boolean WalidataAddClient() {
@@ -343,14 +373,14 @@ zadania=new ZadanieDAO().GetPracownikZadania(1);
         numerTelefonu = textTelefon.getText();
         numerTelefonu = textTelefon.getText();
 
-        if(!(imie.length()==0))
+        if (!(imie.length() == 0))
             imie = imie.substring(0, 1).toUpperCase() + imie.substring(1);
-        if(!(nazwisko.length()==0))
-             nazwisko = nazwisko.substring(0, 1).toUpperCase() + nazwisko.substring(1);
+        if (!(nazwisko.length() == 0))
+            nazwisko = nazwisko.substring(0, 1).toUpperCase() + nazwisko.substring(1);
 
 
-        dataRejestracji=null;
-       if(textDataRejestracji.getValue() !=null)
+        dataRejestracji = null;
+        if (textDataRejestracji.getValue() != null)
             dataRejestracji = Date.valueOf(textDataRejestracji.getValue());
 
 
@@ -422,38 +452,38 @@ zadania=new ZadanieDAO().GetPracownikZadania(1);
      */
     public void DeleteClient() {
         int id;
-        mode=Mode.DELETE;
-      //  if (ConfirmationAlert("Czy chcesz usunąć klienta?")) {
-            try {
-                id = tableKlienci.getSelectionModel().getSelectedItem().getId_klienta();
-                new KlientDAO().DeleteClient(id);
-                DisplayClient();
-                buttonAnuluj.setDisable(false);
-                buttonZaakceptuj.setDisable(false);
+        mode = Mode.DELETE;
+        //  if (ConfirmationAlert("Czy chcesz usunąć klienta?")) {
+        try {
+            id = tableKlienci.getSelectionModel().getSelectedItem().getId_klienta();
+            new KlientDAO().DeleteClient(id);
+            DisplayClient();
+            buttonAnuluj.setDisable(false);
+            buttonZaakceptuj.setDisable(false);
 
-            } catch (Exception ex) {
-                if (ex.equals("NullPointerException")) ;
-                InformationAlert("WYBIERZ KLIENTA DO USUNIĘCIA");
-            }
-       // }
+        } catch (Exception ex) {
+            if (ex.equals("NullPointerException")) ;
+            InformationAlert("WYBIERZ KLIENTA DO USUNIĘCIA");
+        }
+        // }
 
     }
-    public void  SearchClient()
-    {
-       String szukaj;
-        szukaj=szukajTextField.getText();
 
-     klienci= new KlientDAO().SearchKlient(szukaj);
+    public void SearchClient() {
+        String szukaj;
+        szukaj = szukajTextField.getText();
+
+        klienci = new KlientDAO().SearchKlient(szukaj);
         tableKlienci.setItems(klienci);
     }
 
     /**
      * function for filling panel with KLIENT data.
      * Used for UPDATE KLIENT
+     *
      * @param klient object from which we put values into panel for adding new Klient
      */
-    private void FillAddPane(Klient klient)
-    {
+    private void FillAddPane(Klient klient) {
         textEmail.setText(klient.getEmail());
         textImie.setText(klient.getImie());
         textTelefon.setText(klient.getNr_telefonu());
@@ -496,8 +526,6 @@ zadania=new ZadanieDAO().GetPracownikZadania(1);
     }
 
 
-
-
     /**
      * Metoda wypełniająca komponenty Combobox
      * - adresami (miasto)
@@ -509,7 +537,6 @@ zadania=new ZadanieDAO().GetPracownikZadania(1);
         antykwariaty.forEach(antykwariat -> textAdres.getItems().add(antykwariat.getNazwa()));
         adresy.forEach(adres -> textAdres.getItems().add(adres.getMiasto()));
     }
-
 
 
     /**

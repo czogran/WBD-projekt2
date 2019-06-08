@@ -75,6 +75,35 @@ public class PracownikDAO {
         return pracownicy;
     }
 
+
+    /**
+     * Metoda wyszukująca pracownika na podstawie jego nazwiska
+     *
+     * @param id  - kryterium wyszukiwania
+     * @return zwraca danego pracownika
+     */
+    public Pracownik SearchPracownikById(int id) {
+
+
+        Pracownik pracownik1=new Pracownik();
+    //pracownik=null;
+        String cmd = "SELECT * FROM PRACOWNICY WHERE ID_PRACOWNIKA ='" + id + "'";
+        try {
+
+            ResultSet rs = DatabaseConnect.ExecuteStatement(cmd);
+            while (rs.next())
+            {
+                pracownik1 = SetFieldsOfClass(rs, pracownik1);
+//            System.out.println(pracownik1.getId_pracownika().toString());
+        }
+            rs.close();
+            return pracownik1;
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }
+        return pracownik1;
+    }
+
     /**
      * Metoda zwracająca listę pracowników na podstawie wyników zapytania do bazy
      *
@@ -196,7 +225,7 @@ public class PracownikDAO {
      * @return pracownik z wypełnionymi informacjami
      */
     private Pracownik SetFieldsOfClass(ResultSet rs, Pracownik pracownik) {
-        try {
+        try {//System.out.println(rs.getInt(1));
             pracownik.setId_pracownika(rs.getInt(1));
             pracownik.setImie(rs.getString(2));
             pracownik.setNazwisko(rs.getString(3));

@@ -24,13 +24,19 @@ public class ZadanieDAO {
         Zadanie zadanie;
         try {
            // String cmd = "SELECT * FROM zadania";
-            String cmd1="SELECT ID_ZADANIA FROM PRACOWNICY_ZADANIA WHERE ID_PRACOWNIKA+'"+id+"'";
+            String cmd1="SELECT ID_ZADANIA FROM PRACOWNICY_ZADANIA WHERE ID_PRACOWNIKA=+'"+id+"'";
+
+
             ResultSet r1  =  DatabaseConnect.ExecuteStatement(cmd1);
 
+
             int numberZadanie;
-            while (r1.next()) {
+            while (r1.next())
+            {
 
                 numberZadanie=r1.getInt(1);
+                System.out.println("aa:"+  numberZadanie);
+
                 String cmd = "SELECT * FROM zadania WHERE ID_ZADANIA='"+numberZadanie+"'";
                 ResultSet rs = DatabaseConnect.ExecuteStatement(cmd);
 
@@ -41,12 +47,17 @@ public class ZadanieDAO {
 
                     zadania.add(zadanie);
                 }
+                rs.close();
             }
-
+            r1.close();
         } catch (SQLException ex) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText(ex.toString());
             alert.show();
+        }
+        catch (Exception ex)
+        {
+            System.out.println(ex.toString());
         }
 
         return zadania;
