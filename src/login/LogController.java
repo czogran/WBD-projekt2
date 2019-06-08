@@ -31,7 +31,7 @@ public class LogController {
 
             ScreenController.Activate("admin", "Menadżer pracowników", 770, 430);
         } else if (password.getText().equals("bbb") && login.getText().equals("bbb")) {
-            ScreenController.Activate("pracownik","Konto Pracownika",770, 530);
+            ScreenController.Activate("pracownik","Konto Pracownika",760, 480);
         }
 
         //gdy sie nie łaczy z baz danych

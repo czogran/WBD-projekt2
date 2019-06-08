@@ -104,8 +104,37 @@ public class DatabaseConnect {
         //DisconnectConnection();
 
 
+
+    }
+    public static void ExecuteRollback() throws SQLException
+    {
+        Statement state = null;
+        try {
+            state = connection.createStatement();
+
+            state.executeUpdate("ROLLBACK");
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        } finally {
+            //if (state != null) {
+            //state.close();
+        }
     }
 
+    public static void ExecuteCommit() throws SQLException
+    {
+        Statement state = null;
+        try {
+            state = connection.createStatement();
+
+            state.executeUpdate("COMMIT");
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        } finally {
+            //if (state != null) {
+            //state.close();
+        }
+    }
     /*
     public static void ExecutePreparedStatement(String cmd, PreparedStatement pst) throws SQLException {
         PreparedStatement state = pst;

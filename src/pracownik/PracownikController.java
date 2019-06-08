@@ -34,11 +34,11 @@ public class PracownikController {
     @FXML
     private Tab tabKlienci;
 
-    @FXML
-    private Pane paneClientButtons;
+    ///@FXML
+   // private Pane paneClientButtons;
 
-    @FXML
-    Pane paneClientAdd;
+    //@FXML
+    //Pane paneClientAdd;
 
 
     @FXML
@@ -125,8 +125,13 @@ public class PracownikController {
     private Button buttonZaakceptuj;
     @FXML
     private Button buttonAnuluj;
+
     @FXML
-    private Button updateButton;
+    private Button szukajButton;
+
+    @FXML TextField szukajTextField;
+
+
 
     private String imie;
     private String nazwisko;
@@ -173,7 +178,8 @@ public class PracownikController {
      */
     enum Mode {
         UPDATE,
-        INSERT;
+        INSERT,
+        DELETE;
     }
 
     Mode mode;
@@ -189,7 +195,7 @@ public class PracownikController {
      * function for displaying ZADANIA from database on TableView
      */
     public void DisplayZadania() {
-        HideClient();
+
 zadania=new ZadanieDAO().GetAllZadania();
 //TODO tu jest bug nie wyswietla id zadania
         columnIdZadania.setCellValueFactory(new PropertyValueFactory<>("idZadania"));
@@ -219,16 +225,24 @@ zadania=new ZadanieDAO().GetAllZadania();
      * function used when we don't want change database
      * for Anuluj Button
      */
-    public void AnulujPressed() {
+    public void AnulujPressed() throws SQLException {
         ClearCells();
         ChangePaneAddClientActivity(true);
+        if(mode==Mode.DELETE)
+        {
+            if (ConfirmationAlert("Czy chcesz przywrocic usunietych klientow?"))
+            {
+                DatabaseConnect.ExecuteRollback();
+                DisplayClient();
+            }
+        }
     }
 
     /**
      * displays Clients on TableView
      */
     public void DisplayClient() {
-        ShowClient();
+
         klienci = new KlientDAO().GetAllKlienci();
 
         columnId.setCellValueFactory(new PropertyValueFactory<Klient, Integer>("id_klienta"));
@@ -279,28 +293,47 @@ zadania=new ZadanieDAO().GetAllZadania();
      * @throws Exception
      */
     public void ZaakceptujActions() throws Exception {
-        boolean parametersOK = WalidataAddClient();
 
         if (mode == mode.INSERT) {
+            boolean parametersOK = WalidataAddClient();
+
             if (!parametersOK) {
                 Alert info = new Alert(Alert.AlertType.ERROR);
                 info.setContentText(information);
                 info.show();
+
             } else {
+                ClearCells();
                 idKlienta = new KlientDAO().MaxIdEntry();
+                ChangePaneAddClientActivity(true);
                 new KlientDAO().InsertKlient(idKlienta, imie, nazwisko, numerTelefonu, email, czyZarejestrowany, dataRejestracji, idAdresu);
             }
         } else if (mode == mode.UPDATE) {
+            boolean parametersOK = WalidataAddClient();
+
             if (!parametersOK) {
                 Alert info = new Alert(Alert.AlertType.ERROR);
                 info.setContentText(information);
                 info.show();
             } else {
-                
+                ClearCells();
+                ChangePaneAddClientActivity(true);
                 new KlientDAO().UpdateKlient(idKlienta, imie, nazwisko, numerTelefonu, email, czyZarejestrowany, dataRejestracji, idAdresu);
             }
+
+        }
+        else if(mode==mode.DELETE)
+        {
+            if (ConfirmationAlert("Czy chcesz definitywnie usunąć klienta?")) {
+                DatabaseConnect.ExecuteCommit();
+                buttonZaakceptuj.setDisable(true);
+                buttonAnuluj.setDisable(true);
+            }
+
         }
         DisplayClient();
+
+
     }
 
     /**
@@ -314,6 +347,9 @@ zadania=new ZadanieDAO().GetAllZadania();
         information = "";
         numerTelefonu = textTelefon.getText();
         numerTelefonu = textTelefon.getText();
+
+        imie = imie.substring(0, 1).toUpperCase() + imie.substring(1);
+        nazwisko = nazwisko.substring(0, 1).toUpperCase() + nazwisko.substring(1);
 
 
         dataRejestracji=null;
@@ -389,18 +425,29 @@ zadania=new ZadanieDAO().GetAllZadania();
      */
     public void DeleteClient() {
         int id;
-        if (ConfirmationAlert("Czy chcesz usunąć klienta?")) {
+        mode=Mode.DELETE;
+      //  if (ConfirmationAlert("Czy chcesz usunąć klienta?")) {
             try {
-
                 id = tableKlienci.getSelectionModel().getSelectedItem().getId_klienta();
                 new KlientDAO().DeleteClient(id);
                 DisplayClient();
+                buttonAnuluj.setDisable(false);
+                buttonZaakceptuj.setDisable(false);
+
             } catch (Exception ex) {
                 if (ex.equals("NullPointerException")) ;
                 InformationAlert("WYBIERZ KLIENTA DO USUNIĘCIA");
             }
-        }
+       // }
 
+    }
+    public void  SearchClient()
+    {
+       String szukaj;
+        szukaj=szukajTextField.getText();
+
+     klienci= new KlientDAO().SearchKlient(szukaj);
+        tableKlienci.setItems(klienci);
     }
 
     /**
@@ -452,15 +499,7 @@ zadania=new ZadanieDAO().GetAllZadania();
     }
 
 
-    public void HideClient() {
-        paneClientAdd.setVisible(false);
-        paneClientButtons.setVisible(false);
-    }
 
-    public void ShowClient() {
-        paneClientAdd.setVisible(true);
-        paneClientButtons.setVisible(true);
-    }
 
     /**
      * Metoda wypełniająca komponenty Combobox
@@ -473,6 +512,7 @@ zadania=new ZadanieDAO().GetAllZadania();
         antykwariaty.forEach(antykwariat -> textAdres.getItems().add(antykwariat.getNazwa()));
         adresy.forEach(adres -> textAdres.getItems().add(adres.getMiasto()));
     }
+
 
 
     /**

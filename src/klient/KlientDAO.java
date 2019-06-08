@@ -1,5 +1,6 @@
 package klient;
 
+import com.sun.istack.internal.NotNull;
 import connection.DatabaseConnect;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -78,14 +79,14 @@ a.show();*/
         } catch (SQLException ex) {
             System.out.print(ex.toString());
         }
-        try {
+       /* try {
             cmd = "COMMIT";
             DatabaseConnect.ExecuteUpdateStatement(cmd);
             InformationAlert("USUNIETO KLIENTA");
 
         } catch (SQLException ex) {
             System.out.print(ex.toString());
-        }
+        }*/
     }
 public void UpdateKlient(Integer id, String imie, String nazwisko,
                          String telefon, String email, String czyZarejestrowany, Date dataRejestracji, int idAdresu) {
@@ -180,6 +181,56 @@ public void UpdateKlient(Integer id, String imie, String nazwisko,
 
         return id;
     }
+
+
+    /**
+     * Metoda wyszukująca pracownika na podstawie jego nazwiska
+     *
+     * @param nazwisko nazwisko - kryterium wyszukiwania
+     * @return zwraca danego klienta
+     */
+    public ObservableList<Klient> SearchKlient(String nazwisko) {
+        if (nazwisko.isEmpty())
+            return GetAllKlienci();
+
+        nazwisko = nazwisko.toLowerCase();
+        nazwisko = nazwisko.substring(0, 1).toUpperCase() + nazwisko.substring(1);
+        ObservableList<Klient> klienci = null;
+
+        String cmd = "SELECT * FROM KLIENCI WHERE NAZWISKO LIKE \'" + nazwisko + "\'";
+        try {
+
+            ResultSet rs = DatabaseConnect.ExecuteStatement(cmd);
+            klienci = getKlientFromDatabase(rs);
+
+            rs.close();
+            return klienci;
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }
+        return klienci;
+    }
+
+    /**
+     * Metoda zwracająca listę pracowników na podstawie wyników zapytania do bazy
+     *
+     * @param rs wynik zapytania
+     * @return lista pracowników
+     * @throws SQLException
+     */
+    private ObservableList<Klient> getKlientFromDatabase(@NotNull ResultSet rs) throws SQLException {
+        Klient klient;
+        ObservableList<Klient> pracownicy = FXCollections.observableArrayList();
+
+        while (rs.next()) {
+            klient = new Klient();
+            klient = SetFieldsOfClass(rs, klient);
+
+            pracownicy.add(klient);
+        }
+        return pracownicy;
+    }
+
 
     private void InformationAlert(String information) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
