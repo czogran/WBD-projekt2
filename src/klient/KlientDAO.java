@@ -103,7 +103,18 @@ public void UpdateKlient(Integer id, String imie, String nazwisko,
             "DATA_REJESTRACJI ='"+dataRejestracji+" ',"+
             "ID_ADRESU ='" + idAdresu+"'" +"WHERE ID_KLIENTA = '"+id+" '";
 
-
+    if(dataRejestracji ==null)
+    {
+        cmd
+                = "UPDATE KLIENCI SET " +
+                "IMIE ='"+imie+"'," +
+                "NAZWISKO = '"+nazwisko+"',"+
+                "NR_TELEFONU = '"+telefon+"',"+
+                "EMAIL='"+email+"',"+
+                "CZY_ZAREJESTROWANY ='"+czyZarejestrowany+"', "+
+                "DATA_REJESTRACJI ="+null+" ,"+
+                "ID_ADRESU ='" + idAdresu+"'" +"WHERE ID_KLIENTA = '"+id+" '";
+    }
 
 // "', DATE '"
     //return cmd;

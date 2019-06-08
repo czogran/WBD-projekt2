@@ -1,5 +1,6 @@
 package Zadanie;
 
+import com.sun.org.apache.bcel.internal.generic.Select;
 import connection.DatabaseConnect;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,20 +18,29 @@ public class ZadanieDAO {
      *
      * @return returns zadania from database
      */
-    public   ObservableList<Zadanie> GetAllZadania() {
+    public   ObservableList<Zadanie> GetPracownikZadania(int id) {
 
         zadania = FXCollections.observableArrayList();
         Zadanie zadanie;
         try {
-            String cmd = "SELECT * FROM zadania";
-            ResultSet rs = DatabaseConnect.ExecuteStatement(cmd);
+           // String cmd = "SELECT * FROM zadania";
+            String cmd1="SELECT ID_ZADANIA FROM PRACOWNICY_ZADANIA WHERE ID_PRACOWNIKA+'"+id+"'";
+            ResultSet r1  =  DatabaseConnect.ExecuteStatement(cmd1);
 
-            while (rs.next()) {
+            int numberZadanie;
+            while (r1.next()) {
 
-                zadanie = new Zadanie();
-                zadanie = SetFieldsOfClass(rs, zadanie);
+                numberZadanie=r1.getInt(1);
+                String cmd = "SELECT * FROM zadania WHERE ID_ZADANIA='"+numberZadanie+"'";
+                ResultSet rs = DatabaseConnect.ExecuteStatement(cmd);
 
-                zadania.add(zadanie);
+                while (rs.next()) {
+
+                    zadanie = new Zadanie();
+                    zadanie = SetFieldsOfClass(rs, zadanie);
+
+                    zadania.add(zadanie);
+                }
             }
 
         } catch (SQLException ex) {

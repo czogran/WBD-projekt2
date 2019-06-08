@@ -11,18 +11,12 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.Pane;
-import jdk.nashorn.internal.runtime.ECMAException;
 import klient.Klient;
 import klient.KlientDAO;
 import login.ScreenController;
-import oracle.sql.DATE;
 
-import java.awt.event.KeyListener;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Optional;
 import java.util.regex.Pattern;
 
@@ -196,7 +190,7 @@ public class PracownikController {
      */
     public void DisplayZadania() {
 
-zadania=new ZadanieDAO().GetAllZadania();
+zadania=new ZadanieDAO().GetPracownikZadania(1);
 //TODO tu jest bug nie wyswietla id zadania
         columnIdZadania.setCellValueFactory(new PropertyValueFactory<>("idZadania"));
         columnRodzaj.setCellValueFactory(new PropertyValueFactory<>("rodzajZadania"));
@@ -255,6 +249,7 @@ zadania=new ZadanieDAO().GetAllZadania();
         columnAdres.setCellValueFactory(new PropertyValueFactory<Klient, String>("id_adresu"));
 
         tableKlienci.setItems(klienci);
+        tableKlienci.getSortOrder().add(columnId);
     }
 
     /**
@@ -348,8 +343,10 @@ zadania=new ZadanieDAO().GetAllZadania();
         numerTelefonu = textTelefon.getText();
         numerTelefonu = textTelefon.getText();
 
-        imie = imie.substring(0, 1).toUpperCase() + imie.substring(1);
-        nazwisko = nazwisko.substring(0, 1).toUpperCase() + nazwisko.substring(1);
+        if(!(imie.length()==0))
+            imie = imie.substring(0, 1).toUpperCase() + imie.substring(1);
+        if(!(nazwisko.length()==0))
+             nazwisko = nazwisko.substring(0, 1).toUpperCase() + nazwisko.substring(1);
 
 
         dataRejestracji=null;

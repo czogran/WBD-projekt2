@@ -89,7 +89,7 @@
                                     </columns>
                                 </TableView>
                      <Separator layoutX="518.0" orientation="VERTICAL" prefHeight="283.0" prefWidth="3.0" />
-                     <Label layoutX="518.0" layoutY="14.0" prefHeight="234.0" prefWidth="223.0" text="Zadania jakie są do wykonania" />
+                     <Label layoutX="532.0" layoutY="14.0" prefHeight="234.0" prefWidth="223.0" text="Zadania jakie są do wykonania" />
     </children>
     </Pane>
                 </Tab>
