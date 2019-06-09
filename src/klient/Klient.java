@@ -7,6 +7,7 @@ import javafx.scene.control.Alert;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class Klient {
     private Integer id_klienta;
@@ -137,4 +138,5 @@ public class Klient {
 
         return klienci;
     }
+
 }

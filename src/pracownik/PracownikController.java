@@ -138,8 +138,10 @@ public class PracownikController {
     @FXML
     private Label urodzinyLabel;
 
+    @FXML
+    private TabPane mainTab;
 
-    public static int id=1;
+    public static int id;
 
     private String imie;
     private String nazwisko;
@@ -167,7 +169,8 @@ public class PracownikController {
 
         DisplayClient();
         SetComboBoxes();
-        DisplayPracownik(id);
+       // System.out.println(id+"aaaaaaaaaa");
+        //DisplayPracownik(3);
 
     }
 
@@ -185,18 +188,21 @@ public class PracownikController {
      * UPDATE- for updating client
      * INSERT-for adding new client
      */
-    enum Mode {
+    public enum Mode {
         UPDATE,
         INSERT,
         DELETE;
     }
 
-    Mode mode;
+     public static Mode mode;
 
     /**
      * method for logging out of PRACOWNIK access to database
      */
     public void Logout() {
+        id=0;
+        DisplayPracownik();
+        mainTab.getSelectionModel().select(0);
         ScreenController.Activate("login", "Baza Danych Antykwariatów", 310, 230);
     }
 
@@ -204,9 +210,9 @@ public class PracownikController {
      * function for displaying ZADANIA from database on TableView
      */
     public void DisplayZadania() {
+       // System.out.println(id+"qqqqqqqqqqqq");
 
         zadania = new ZadanieDAO().GetPracownikZadania(id);
-//TODO tu jest bug nie wyswietla id zadania
         columnIdZadania.setCellValueFactory(new PropertyValueFactory<>("idZadania"));
         columnRodzaj.setCellValueFactory(new PropertyValueFactory<>("rodzajZadania"));
         columnDataNadania.setCellValueFactory(new PropertyValueFactory<>("dataNadania"));
@@ -216,9 +222,26 @@ public class PracownikController {
         tableZadania.setItems(zadania);
     }
 
-    private void DisplayPracownik(int id) {
-        Pracownik pracownik = new PracownikDAO().SearchPracownikById(id);
 
+    public void DisplayPracownik() {
+        Pracownik pracownik = new PracownikDAO().SearchPracownikById(id);
+           // System.out.println(id+"aaaaaaaaaaaaaa");
+        try {
+            imieLabel.setText(pracownik.getImie());
+            nazwiskoLabel.setText(pracownik.getNazwisko());
+            telefonLabel.setText(pracownik.getNr_telefonu());
+            urodzinyLabel.setText(pracownik.getData_urodzenia());
+        }
+        catch (Exception ex)
+        {
+
+        }
+
+
+    }
+    public void DisplayPracownik(int id1) {
+        Pracownik pracownik = new PracownikDAO().SearchPracownikById(id1);
+        // System.out.println(id+"aaaaaaaaaaaaaa");
         try {
             imieLabel.setText(pracownik.getImie());
             nazwiskoLabel.setText(pracownik.getNazwisko());
@@ -295,13 +318,16 @@ public class PracownikController {
      * setting mode for UPDATE Klienci
      */
     public void ActivateUpdateClient() {
+
         ClearCells();
         mode = Mode.UPDATE;
         ChangePaneAddClientActivity(false);
 
         Klient klient;
         try {
+
             klient = tableKlienci.getSelectionModel().getSelectedItem();
+
             idKlienta = klient.getId_klienta();
 
             FillAddPane(klient);
@@ -330,6 +356,7 @@ public class PracownikController {
 
             } else {
                 ClearCells();
+                System.out.println("aaaaaaaa"+email);
                 idKlienta = new KlientDAO().MaxIdEntry();
                 ChangePaneAddClientActivity(true);
                 new KlientDAO().InsertKlient(idKlienta, imie, nazwisko, numerTelefonu, email, czyZarejestrowany, dataRejestracji, idAdresu);
@@ -389,8 +416,8 @@ public class PracownikController {
         else
             czyZarejestrowany = "n";
 
-
         email = textEmail.getText();
+
         idAdresu = -1;
         for (Adres adr : adresy) {
             if (adr.getMiasto().equals(textAdres.getSelectionModel().getSelectedItem())) {
@@ -484,6 +511,7 @@ public class PracownikController {
      * @param klient object from which we put values into panel for adding new Klient
      */
     private void FillAddPane(Klient klient) {
+        if(!(klient.getEmail()==(null)))
         textEmail.setText(klient.getEmail());
         textImie.setText(klient.getImie());
         textTelefon.setText(klient.getNr_telefonu());

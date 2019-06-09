@@ -34,5 +34,6 @@ public class ScreenController {
         stage.setResizable(false);
         stage.centerOnScreen();
         stage.show();
+
     }
 }

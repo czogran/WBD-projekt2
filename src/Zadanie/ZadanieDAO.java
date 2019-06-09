@@ -35,7 +35,7 @@ public class ZadanieDAO {
             {
 
                 numberZadanie=r1.getInt(1);
-                System.out.println("aa:"+  numberZadanie);
+              //  System.out.println("aa:"+  numberZadanie);
 
                 String cmd = "SELECT * FROM zadania WHERE ID_ZADANIA='"+numberZadanie+"'";
                 ResultSet rs = DatabaseConnect.ExecuteStatement(cmd);
@@ -44,7 +44,7 @@ public class ZadanieDAO {
 
                     zadanie = new Zadanie();
                     zadanie = SetFieldsOfClass(rs, zadanie);
-
+                    System.out.println(zadanie.getIdZadania()+"aaaaaa");
                     zadania.add(zadanie);
                 }
                 rs.close();

@@ -20,7 +20,7 @@
 <AnchorPane prefHeight="400.0" prefWidth="823.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pracownik.PracownikController">
 
     <children>
-        <TabPane layoutX="14.0" layoutY="3.0" prefHeight="478.0" prefWidth="745.0" tabClosingPolicy="UNAVAILABLE">
+        <TabPane fx:id="mainTab" layoutX="14.0" layoutY="3.0" prefHeight="478.0" prefWidth="745.0" tabClosingPolicy="UNAVAILABLE">
             <tabs>
             <Tab fx:id="tabKlienci" onSelectionChanged="#DisplayClient" text="Klienci">
     <Pane prefHeight="439.0" prefWidth="707.0">
@@ -93,7 +93,7 @@
     </children>
     </Pane>
                 </Tab>
-            <Tab text="Pracownik">
+            <Tab onSelectionChanged="#DisplayPracownik" text="Pracownik">
                <content>
                   <Pane prefHeight="380.0" prefWidth="685.0">
                      <children>
@@ -114,7 +114,7 @@
                         <Label fx:id="nazwiskoLabel" layoutX="126.0" layoutY="56.0" text="Label" />
                         <Label layoutX="24.0" layoutY="104.0" text="TELEFON" />
                         <Label fx:id="telefonLabel" layoutX="126.0" layoutY="104.0" text="Label" />
-                        <Label layoutX="24.0" layoutY="139.0" prefHeight="42.0" prefWidth="79.0" text=" URODZINY" />
+                        <Label layoutX="22.0" layoutY="140.0" prefHeight="42.0" prefWidth="79.0" text=" URODZINY" />
                         <Label fx:id="urodzinyLabel" layoutX="126.0" layoutY="150.0" text="a" />
                      </children>
                   </Pane>

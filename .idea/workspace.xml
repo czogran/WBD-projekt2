@@ -2,8 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="18576383-7434-4067-b474-e74e0fa9a342" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Oracle Database application/Zadanie/ZadanieDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Oracle Database application/Zadanie/ZadanieDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Oracle Database application/admin/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Oracle Database application/admin/AdminController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Oracle Database application/admin/admin_menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Oracle Database application/admin/admin_menu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Oracle Database application/klient/Klient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Oracle Database application/klient/Klient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Oracle Database application/login/LogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Oracle Database application/login/LogController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Oracle Database application/pracownik/PracownikController$Mode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Oracle Database application/pracownik/PracownikController$Mode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Oracle Database application/pracownik/PracownikController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Oracle Database application/pracownik/PracownikController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Oracle Database application/pracownik/PracownikDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Oracle Database application/pracownik/PracownikDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Oracle Database application/pracownik/pracownik_menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Oracle Database application/pracownik/pracownik_menu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Zadanie/ZadanieDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zadanie/ZadanieDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/admin_menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/admin_menu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/klient/Klient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/klient/Klient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/login/LogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/login/LogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/login/ScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/login/ScreenController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pracownik/PracownikController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pracownik/PracownikController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pracownik/PracownikDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pracownik/PracownikDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pracownik/pracownik_menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/pracownik/pracownik_menu.fxml" afterDir="false" />
@@ -16,42 +30,41 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DefaultGradleProjectSettings">
-    <option name="testRunner" value="GRADLE" />
-    <option name="delegatedBuild" value="true" />
+    <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pracownik/pracownik_menu.fxml">
           <provider editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="113" column="47" selection-start-line="113" selection-start-column="38" selection-end-line="113" selection-end-column="47" />
+            <state relative-caret-position="214">
+              <caret line="67" column="18" lean-forward="true" selection-start-line="67" selection-start-column="18" selection-end-line="67" selection-end-column="18" />
             </state>
           </provider>
           <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Zadanie/ZadanieDAO.java">
+        <entry file="file://$PROJECT_DIR$/src/admin/AdminController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
-              <caret line="51" column="23" selection-start-line="51" selection-start-column="23" selection-end-line="51" selection-end-column="23" />
+            <state relative-caret-position="141">
+              <caret line="603" column="23" selection-start-line="603" selection-start-column="23" selection-end-line="603" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#15816#15817#0" expanded="true" />
+                <element signature="e#15905#15906#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/admin/AdminController.java">
+        <entry file="file://$PROJECT_DIR$/src/Zadanie/ZadanieDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="132" column="63" lean-forward="true" selection-start-line="132" selection-start-column="7" selection-end-line="132" selection-end-column="63" />
+            <state relative-caret-position="341">
+              <caret line="41" selection-start-line="41" selection-end-line="41" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#14898#14899#0" expanded="true" />
-                <element signature="e#14987#14988#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -60,29 +73,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pracownik/PracownikDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="227" column="15" selection-start-line="227" selection-start-column="15" selection-end-line="227" selection-end-column="15" />
+            <state relative-caret-position="172">
+              <caret line="272" column="22" selection-start-line="272" selection-start-column="22" selection-end-line="272" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/klient/KlientDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1314">
-              <caret line="113" column="64" lean-forward="true" selection-start-line="113" selection-start-column="64" selection-end-line="113" selection-end-column="64" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pracownik/PracownikController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="225" column="63" selection-start-line="225" selection-start-column="63" selection-end-line="225" selection-end-column="63" />
+            <state relative-caret-position="-6114">
+              <caret line="204" column="44" selection-start-line="204" selection-start-column="44" selection-end-line="204" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -93,8 +94,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/login/ScreenController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="31" column="30" lean-forward="true" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
+            <state relative-caret-position="356">
+              <caret line="36" selection-start-line="36" selection-end-line="36" />
             </state>
           </provider>
         </entry>
@@ -102,17 +103,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/login/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
+            <state relative-caret-position="203">
               <caret line="22" column="58" selection-start-line="22" selection-start-column="58" selection-end-line="22" selection-end-column="58" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/login/LogController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="37" column="9" lean-forward="true" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
+            <state relative-caret-position="266">
+              <caret line="43" selection-start-line="43" selection-end-line="43" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -120,7 +124,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/login/logowanie.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
+            <state relative-caret-position="187">
               <caret line="11" column="75" selection-start-line="11" selection-start-column="75" selection-end-line="11" selection-end-column="75" />
             </state>
           </provider>
@@ -139,21 +143,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>SetComboBoxes();</find>
-      <find>SetComboBoxes()</find>
-      <find>SetComboBoxes</find>
-      <find>SetComboBoxes</find>
-      <find>localD</find>
-      <find>SetCom</find>
-      <find>textData</find>
-      <find>textDataRe</find>
-      <find>Alert</find>
-      <find>Aler</find>
-      <find>data_uro</find>
-      <find>entries</find>
-      <find>CancelE</find>
-      <find>insertPra</find>
-      <find>Inser</find>
       <find>pan</find>
       <find>paneClien</find>
       <find>szukajTextField</find>
@@ -166,9 +155,24 @@
       <find>paneClientAdd</find>
       <find>Displ</find>
       <find>getPr</find>
-      <find>klientda</find>
       <find>nazwi</find>
       <find>nazwiskoL</find>
+      <find>klientda</find>
+      <find>zare</find>
+      <find>emai</find>
+      <find>null</find>
+      <find>em</find>
+      <find>Clear</find>
+      <find>email</find>
+      <find>FillA</find>
+      <find>mo</find>
+      <find>id</find>
+      <find>Display</find>
+      <find>displayP</find>
+      <find>DisplayZ</find>
+      <find>DisplayP</find>
+      <find>isin</find>
+      <find>logou</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -180,34 +184,34 @@
         <option value="$PROJECT_DIR$/src/Zadania/Zadania.java" />
         <option value="$PROJECT_DIR$/src/Zadanie/Zadania.java" />
         <option value="$PROJECT_DIR$/src/antykwariat/AntykwariatDAO.java" />
-        <option value="$PROJECT_DIR$/src/klient/Klient.java" />
         <option value="$PROJECT_DIR$/src/login/logowanie.fxml" />
         <option value="$PROJECT_DIR$/src/admin/admin_menu.fxml" />
-        <option value="$PROJECT_DIR$/src/login/ScreenController.java" />
         <option value="$PROJECT_DIR$/src/login/Main.java" />
         <option value="$PROJECT_DIR$/src/Zadanie/Zadanie.java" />
-        <option value="$PROJECT_DIR$/src/admin/AdminController.java" />
         <option value="$PROJECT_DIR$/src/connection/DatabaseConnect.java" />
         <option value="$PROJECT_DIR$/src/klient/KlientDAO.java" />
-        <option value="$PROJECT_DIR$/src/Zadanie/ZadanieDAO.java" />
+        <option value="$PROJECT_DIR$/src/klient/Klient.java" />
         <option value="$PROJECT_DIR$/src/pracownik/PracownikDAO.java" />
-        <option value="$PROJECT_DIR$/src/login/LogController.java" />
+        <option value="$PROJECT_DIR$/src/admin/AdminController.java" />
+        <option value="$PROJECT_DIR$/src/Zadanie/ZadanieDAO.java" />
         <option value="$PROJECT_DIR$/src/pracownik/pracownik_menu.fxml" />
+        <option value="$PROJECT_DIR$/src/login/ScreenController.java" />
         <option value="$PROJECT_DIR$/src/pracownik/PracownikController.java" />
+        <option value="$PROJECT_DIR$/src/login/LogController.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="width" value="1937" />
-    <option name="height" value="1038" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-354" />
+    <option name="y" value="51" />
+    <option name="width" value="2423" />
+    <option name="height" value="1299" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -273,6 +277,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -339,63 +344,63 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="0" width="1549" height="830" extended-state="0" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Image Layers" />
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Capture Tool" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15849563" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16040269" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" weight="0.32808024" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.4269341" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.38681948" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3753541" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39971346" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Maven" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32719547" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Maven" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout>
     <layout-to-restore>
-      <window_info id="Image Layers" order="0" />
-      <window_info id="Designer" order="1" />
-      <window_info id="UI Designer" order="2" />
-      <window_info id="Capture Tool" order="3" />
-      <window_info id="Favorites" order="4" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.24983211" />
-      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" order="0" />
-      <window_info anchor="bottom" id="Terminal" order="1" />
-      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="3" weight="0.32808024" />
-      <window_info anchor="bottom" id="Message" order="4" />
-      <window_info anchor="bottom" id="Find" order="5" weight="0.4269341" />
-      <window_info anchor="bottom" id="Run" order="6" visible="true" weight="0.44412607" />
-      <window_info anchor="bottom" id="Debug" order="7" weight="0.39971346" />
-      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="10" />
-      <window_info anchor="right" id="Palette" order="0" />
-      <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="right" id="Theme Preview" order="2" />
-      <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info anchor="right" id="Maven" order="4" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16040269" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.4269341" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3753541" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39971346" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32719547" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Maven" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout-to-restore>
   </component>
   <component name="XDebuggerManager">
@@ -464,20 +469,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/klient/Klient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="32" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zadanie/Zadanie.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="26" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/admin/admin_menu.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -495,94 +486,121 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/connection/DatabaseConnect.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="123" column="39" selection-start-line="123" selection-start-column="39" selection-end-line="123" selection-end-column="39" />
+        <state relative-caret-position="1207">
+          <caret line="71" column="35" selection-start-line="71" selection-start-column="35" selection-end-line="71" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/admin/AdminController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="132" column="63" lean-forward="true" selection-start-line="132" selection-start-column="7" selection-end-line="132" selection-end-column="63" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#14898#14899#0" expanded="true" />
-            <element signature="e#14987#14988#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/klient/KlientDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1314">
-          <caret line="113" column="64" lean-forward="true" selection-start-line="113" selection-start-column="64" selection-end-line="113" selection-end-column="64" />
+        <state relative-caret-position="1073">
+          <caret line="159" column="21" selection-start-line="159" selection-start-column="21" selection-end-line="159" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Zadanie/ZadanieDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/klient/Klient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="51" column="23" selection-start-line="51" selection-start-column="23" selection-end-line="51" selection-end-column="23" />
+        <state relative-caret-position="274">
+          <caret line="140" selection-start-line="140" selection-end-line="140" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pracownik/PracownikDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/Zadanie/Zadanie.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="227" column="15" selection-start-line="227" selection-start-column="15" selection-end-line="227" selection-end-column="15" />
+        <state relative-caret-position="68">
+          <caret line="4" column="26" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/login/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/admin/AdminController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="22" column="58" selection-start-line="22" selection-start-column="58" selection-end-line="22" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/login/ScreenController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="31" column="30" lean-forward="true" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
+        <state relative-caret-position="141">
+          <caret line="603" column="23" selection-start-line="603" selection-start-column="23" selection-end-line="603" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#15816#15817#0" expanded="true" />
+            <element signature="e#15905#15906#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/login/logowanie.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
+        <state relative-caret-position="187">
           <caret line="11" column="75" selection-start-line="11" selection-start-column="75" selection-end-line="11" selection-end-column="75" />
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/login/LogController.java">
+    <entry file="file://$PROJECT_DIR$/src/Zadanie/ZadanieDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="37" column="9" lean-forward="true" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
+        <state relative-caret-position="341">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/login/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="22" column="58" selection-start-line="22" selection-start-column="58" selection-end-line="22" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../PROGRAMY/Java/javafx-src.zip!/com/sun/javafx/application/PlatformImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="294" column="26" selection-start-line="294" selection-start-column="26" selection-end-line="294" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pracownik/PracownikDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="272" column="22" selection-start-line="272" selection-start-column="22" selection-end-line="272" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/login/ScreenController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pracownik/PracownikController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6114">
+          <caret line="204" column="44" selection-start-line="204" selection-start-column="44" selection-end-line="204" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pracownik/pracownik_menu.fxml">
       <provider editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="113" column="47" selection-start-line="113" selection-start-column="38" selection-end-line="113" selection-end-column="47" />
+        <state relative-caret-position="214">
+          <caret line="67" column="18" lean-forward="true" selection-start-line="67" selection-start-column="18" selection-end-line="67" selection-end-column="18" />
         </state>
       </provider>
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pracownik/PracownikController.java">
+    <entry file="file://$PROJECT_DIR$/src/login/LogController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="225" column="63" selection-start-line="225" selection-start-column="63" selection-end-line="225" selection-end-column="63" />
+        <state relative-caret-position="266">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
